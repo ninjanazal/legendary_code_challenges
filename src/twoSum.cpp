@@ -31,7 +31,6 @@ void TwoSum::execute() {
     printResult(output);
 }
 
-
 /// @brief Accepted
 ///  595 ms / Memory 10MB
 vector<int> TwoSum::twoSum(vector<int> &nums, int target) {
@@ -49,7 +48,6 @@ vector<int> TwoSum::twoSum(vector<int> &nums, int target) {
     return output;
 }
 
-
 /// @brief Accepted
 /// @return  17 ms / Mem 10.8 MB
 vector<int> TwoSum::twoSumSecondTry(vector<int> &nums, int target) {
@@ -66,8 +64,6 @@ vector<int> TwoSum::twoSumSecondTry(vector<int> &nums, int target) {
 
     return {};
 }
-
-
 
 void TwoSum::printResult(vector<int> result) {
     stringstream ss;

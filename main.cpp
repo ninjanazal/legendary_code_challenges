@@ -1,8 +1,7 @@
-#include "twoSum.h"
+#include "matrixDiagonasum.h"
 
 using namespace LendaryCodeChallenges;
 
 int main() {
-    TwoSum::execute();
-    std::cout << "Exiting" << std::endl;
+    MatrixDiagonalSum::execute();
 }
