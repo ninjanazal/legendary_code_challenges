@@ -4,14 +4,14 @@
 #include <unordered_map>
 
 #include "profileBlock.h"
-#include "sortingFuncs.h"
+
 
 using namespace LendaryCodeChallenges;
 using namespace std;
 
 void MatrixDiagonalSum::execute() {
     printf("--- Matrix Diagonal sum ---\n");
-	
+
     vector<vector<int>> input = {{1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}, {1, 1, 1, 1}};
     int result = 0;
     {

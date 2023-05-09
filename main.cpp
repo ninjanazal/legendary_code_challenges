@@ -1,7 +1,7 @@
-#include "matrixDiagonasum.h"
+#include "palidromeNumber.h"
 
 using namespace LendaryCodeChallenges;
 
 int main() {
-    MatrixDiagonalSum::execute();
+    PalidromNumber::execute();
 }
