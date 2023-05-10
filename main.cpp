@@ -1,7 +1,7 @@
-#include "palidromeNumber.h"
+#include "spiralMatrix.h"
 
 using namespace LendaryCodeChallenges;
 
 int main() {
-    PalidromNumber::execute();
+	SpiralMatrix::execute();
 }

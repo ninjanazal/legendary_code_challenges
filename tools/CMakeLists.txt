@@ -7,10 +7,8 @@ set ( SOURCE
 )
 
 set ( HEADERS 
-    ${SOURCE}
+    ${HEADERS}
     ${CMAKE_CURRENT_SOURCE_DIR}/sortingFuncs.h
     ${CMAKE_CURRENT_SOURCE_DIR}/profileBlock.h
-
-
     PARENT_SCOPE
 )

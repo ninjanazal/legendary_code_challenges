@@ -13,7 +13,7 @@ BUILDPROJ=FALSE
 #- - - - - - - - - - - - - - - - - - - -
 RUNPROJ=FALSE
 
-DEBUGMODE=FALSE
+DEBUGMODE=TRUE
 
 
 
@@ -65,7 +65,11 @@ done
 
 if [ "$CLEAR_ALL" = TRUE ]; then
     rm Build -R -rf
+	echo -e "______________________________________________________________________"
+
+    exit 0
 fi
+
 
 if [ ! -d "Build" ]; then
 	mkdir Build
@@ -73,10 +77,20 @@ fi
 
 cd Build
 
-if [ "$DEBUGMODE" = TRUE ]; then
-    cmake -G "MinGW Makefiles" .. -DCMAKE_BUILD_TYPE=Debug
-else
-    cmake -G "MinGW Makefiles" .. -DCMAKE_BUILD_TYPE=Release
+if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    if [ "$DEBUGMODE" = TRUE ]; then
+        cmake  .. -DCMAKE_BUILD_TYPE=Debug
+    else
+        cmake  .. -DCMAKE_BUILD_TYPE=Release
+    fi
+
+elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then
+
+    if [ "$DEBUGMODE" = TRUE ]; then
+        cmake -G "MinGW Makefiles" .. -DCMAKE_BUILD_TYPE=Debug
+    else
+        cmake -G "MinGW Makefiles" .. -DCMAKE_BUILD_TYPE=Release
+    fi
 fi
 
 cd ..
@@ -88,5 +102,9 @@ if [ "$BUILDPROJ" = TRUE ]; then
 fi
 
 if [ "$RUNPROJ" == TRUE ]; then
-    ./Build/LegendaryCodeChallenges.exe
+    if [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+        ./Build/LegendaryCodeChallenges
+    elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then
+        ./Build/LegendaryCodeChallenges.exe
+    fi
 fi
