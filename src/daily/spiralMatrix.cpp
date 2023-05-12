@@ -1,8 +1,5 @@
 #include "spiralMatrix.h"
 
-#include <math.h>
-
-#include <algorithm>
 #include <sstream>
 #include <vector>
 
@@ -28,7 +25,7 @@ void SpiralMatrix::execute() {
 
     printResult(output);
 
-	std::count << " second --- " << std::endl;
+	std::cout << " second --- " << std::endl;
 
 	{
 		ProfileBlock t;
@@ -38,6 +35,7 @@ void SpiralMatrix::execute() {
     printResult(output);
 
 }
+
 
 vector<int> SpiralMatrix::spiralOrder(vector<vector<int>>& matrix) {
     vector<int> output;

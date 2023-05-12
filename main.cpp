@@ -1,7 +1,7 @@
-#include "spiralMatrix.h"
+#include "uncrossedLines.h"
 
 using namespace LendaryCodeChallenges;
 
 int main() {
-	SpiralMatrix::execute();
+	UncrossedLines::execute();
 }
