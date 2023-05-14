@@ -2,11 +2,15 @@
 set( SRC_SOURCE
     ${CMAKE_CURRENT_SOURCE_DIR}/twoSum.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/palidromeNumber.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/romantointeger.cpp
+
 )
 
 set ( SRC_HEADERS 
     ${CMAKE_CURRENT_SOURCE_DIR}/twoSum.h
     ${CMAKE_CURRENT_SOURCE_DIR}/palidromeNumber.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/romantointeger.h
+
 )
 
 
