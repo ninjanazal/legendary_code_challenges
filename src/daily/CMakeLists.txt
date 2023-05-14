@@ -3,6 +3,7 @@ set ( SRC_SOURCE
   ${CMAKE_CURRENT_SOURCE_DIR}/matrixDiagonasum.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/spiralMatrix.cpp
   ${CMAKE_CURRENT_SOURCE_DIR}/uncrossedLines.cpp
+  ${CMAKE_CURRENT_SOURCE_DIR}/questionsWithBrainPower.cpp
 
 
   PARENT_SCOPE
@@ -14,6 +15,8 @@ set ( SRC_HEADERS
   ${CMAKE_CURRENT_SOURCE_DIR}/matrixDiagonasum.h
   ${CMAKE_CURRENT_SOURCE_DIR}/spiralMatrix.h
   ${CMAKE_CURRENT_SOURCE_DIR}/uncrossedLines.h
+  ${CMAKE_CURRENT_SOURCE_DIR}/questionsWithBrainPower.h
+
 
   PARENT_SCOPE
 ) 
