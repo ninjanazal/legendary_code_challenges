@@ -1,7 +1,7 @@
-#include "swappingNodes.h"
+#include "swappairs.h"
 
 using namespace LendaryCodeChallenges;
 
 int main() {
-	SwappingNodes::execute();
+	SwapPairs::execute();
 }

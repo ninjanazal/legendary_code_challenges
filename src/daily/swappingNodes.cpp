@@ -9,7 +9,7 @@ using namespace LendaryCodeChallenges;
 using namespace std;
 
 void SwappingNodes::execute() {
-    printf("--- Spiral Matrix ---\n");
+    printf("--- Swapping Nodes ---\n");
     SwappingNodes::ListNode* input;
     vector<int> data = {7, 9, 6, 6, 7, 8, 3, 0, 9, 5};
     int k = 5;
@@ -56,7 +56,7 @@ SwappingNodes::ListNode* SwappingNodes::swapNodes(ListNode* head, int k) {
 
 void SwappingNodes::printResult(ListNode* result) {
     ListNode* c = result;
-    while (c->next) {
+    while (c) {
         cout << " " << c->val << endl;
         c = c->next;
     }
