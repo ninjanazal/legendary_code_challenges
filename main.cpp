@@ -1,7 +1,7 @@
-#include "swappairs.h"
+#include "maximumTwinSum.h"
 
 using namespace LendaryCodeChallenges;
 
 int main() {
-	SwapPairs::execute();
+	MaximumTwinSum::execute();
 }
