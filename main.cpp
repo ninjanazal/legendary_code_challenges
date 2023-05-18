@@ -1,7 +1,7 @@
-#include "maximumTwinSum.h"
+#include "minimunverticestoreach.h"
 
 using namespace LendaryCodeChallenges;
 
 int main() {
-	MaximumTwinSum::execute();
+	MinimunVerticesToReach::execute();
 }
