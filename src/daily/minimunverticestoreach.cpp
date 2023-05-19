@@ -46,6 +46,6 @@ void MinimunVerticesToReach::printResult(vector<int> result) {
     stringstream ss;
     for (int val : result) {
         ss << val << " ";
-    }
+    }                                                                                                                                                                 
     std::cout << ss.str() << std::endl;
 }

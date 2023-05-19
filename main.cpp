@@ -1,7 +1,7 @@
-#include "minimunverticestoreach.h"
+#include "graphbipartite.h"
 
 using namespace LendaryCodeChallenges;
 
 int main() {
-	MinimunVerticesToReach::execute();
+	GraphBipartite::execute();
 }
