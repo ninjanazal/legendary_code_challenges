@@ -20,4 +20,32 @@ public class ArrayAndHashing {
     }
     return false;
   }
+
+  /*
+   * [242. Valid
+   * Anagram](https://leetcode.com/problems/valid-anagram/description/)
+   * Given two strings s and t, return true if t is an anagram of s, and false
+   * otherwise.
+   * An Anagram is a word or phrase formed by rearranging the letters of a
+   * different word or phrase,
+   * typically using all the original letters exactly once.
+   */
+  public static boolean isAnagram(String s, String t) {
+    if (s.length() != t.length()) {
+      return false;
+    }
+
+    char[] sChars = s.toCharArray();
+    Arrays.sort(sChars);
+    char[] tChars = t.toCharArray();
+    Arrays.sort(tChars);
+
+    for (int i = 0; i < sChars.length; i++) {
+      if (sChars[i] != tChars[i]) {
+        return false;
+      }
+    }
+
+    return true;
+  }
 }

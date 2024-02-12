@@ -22,4 +22,16 @@ public class ArrayAndHashingTest {
             "Input: nums = [1,1,1,3,3,4,3,2,4,2]\n" +
             "Output: true");
   }
+
+  @Test
+  void isAnagramTest() {
+    assertTrue(ArrayAndHashing.isAnagram("anagram", "nagaram"), "Failed on Example 1:\n" +
+        "Input: s = \"anagram\", t = \"nagaram\"\n" +
+        "Output: true");
+
+    assertFalse(ArrayAndHashing.isAnagram("rat", "car"), "Failed on Example 2:\n" +
+        "Input: s = \"rat\", t = \"car\"\n" +
+        "Output: false"
+        );
+  }
 }
