@@ -3,57 +3,65 @@ package org.legendary_code_challenges.exercises;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+import org.legendary_code_challenges.exercises.tools.*;
 import java.util.*;
 
 public class ArrayAndHashingTest {
-    @Test
-    void containsDuplicateTest() {
-        assertTrue(ArrayAndHashing.containsDuplicate(new int[] { 1, 2, 3, 1 }), "Failded on Example 1:\n" +
-                "\n" +
-                "Input: nums = [1,2,3,1]\n" +
-                "Output: true");
+	// [217. Contains Duplicate]
+	@Test
+	void containsDuplicateTest() {
+		assertTrue(ArrayAndHashing.containsDuplicate(new int[] { 1, 2, 3, 1 }), "Failded on Example 1");
+		assertFalse(ArrayAndHashing.containsDuplicate(new int[] { 1, 2, 3, 4 }), "Failed on Example 2");
+		assertTrue(ArrayAndHashing.containsDuplicate(new int[] { 1, 1, 1, 3, 3, 4, 3, 2, 4, 2 }),
+				"Failded on Example 3");
+	}
 
-        assertFalse(ArrayAndHashing.containsDuplicate(new int[] { 1, 2, 3, 4 }), "Failed on Example 2:\n" +
-                "Input: nums = [1,2,3,4]\n" + //
-                "Output: false");
+	// [242. Valid Anagram]
+	@Test
+	void isAnagramTest() {
+		assertTrue(ArrayAndHashing.isAnagram("anagram", "nagaram"), "Failed on Example 1");
+		assertFalse(ArrayAndHashing.isAnagram("rat", "car"), "Failed on Example 2");
+	}
 
-        assertTrue(ArrayAndHashing.containsDuplicate(new int[] { 1, 1, 1, 3, 3, 4, 3, 2, 4, 2 }),
-                "Failded on Example 3:\n" +
-                        "\n" +
-                        "Input: nums = [1,1,1,3,3,4,3,2,4,2]\n" +
-                        "Output: true");
-    }
+	// [1. Two Sum]
+	@Test
+	void twoSumTest() {
+		assertTrue(Arrays.equals(new int[] { 0, 1 }, ArrayAndHashing.twoSum(new int[] { 2, 7, 11, 15 }, 9)),
+				"Failed on Exemple 1");
+		assertTrue(Arrays.equals(new int[] { 1, 2 }, ArrayAndHashing.twoSum(new int[] { 3, 2, 4 }, 6)),
+				"Failed on Exemple 2");
+		assertTrue(Arrays.equals(new int[] { 0, 1 }, ArrayAndHashing.twoSum(new int[] { 3, 3 }, 6)),
+				"Failed on Exemple 3");
+		assertTrue(Arrays.equals(new int[] { 2, 4 }, ArrayAndHashing.twoSum(new int[] { -1, -2, -3, -4, -5 }, -8)),
+				"Failed on Submission test");
+	}
 
-    @Test
-    void isAnagramTest() {
-        assertTrue(ArrayAndHashing.isAnagram("anagram", "nagaram"), "Failed on Example 1:\n" +
-                "Input: s = \"anagram\", t = \"nagaram\"\n" +
-                "Output: true");
+	// [49. Group Anagrams]
+	@Test
+	void groupAnagramsTest() {
+		// Exemple 1
+		List<List<String>> expectedResult = new ArrayList<List<String>>();
+		expectedResult.add(Arrays.asList(new String[] { "bat" }));
+		expectedResult.add(Arrays.asList(new String[] { "nat", "tan" }));
+		expectedResult.add(Arrays.asList(new String[] { "ate", "eat", "tea" }));
 
-        assertFalse(ArrayAndHashing.isAnagram("rat", "car"), "Failed on Example 2:\n" +
-                "Input: s = \"rat\", t = \"car\"\n" +
-                "Output: false");
-    }
+		List<List<String>> output = ArrayAndHashing
+				.groupAnagrams(new String[] { "eat", "tea", "tan", "ate", "nat", "bat" });
 
-    @Test
-    void twoSumTest() {
-        assertTrue(Arrays.equals(new int[] { 0, 1 }, ArrayAndHashing.twoSum(new int[] { 2, 7, 11, 15 }, 9)),
-                "Failed on Exemple 1:\n" +
-                        "Output: [0,1] \n" +
-                        "Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].");
+		assertTrue(Assertions.<String>containeUNestedList(expectedResult, output), "Failed on Example 1");
 
-        assertTrue(Arrays.equals(new int[] { 1, 2 }, ArrayAndHashing.twoSum(new int[] { 3, 2, 4 }, 6)),
-                "Failed on Exemple 2:\n" +
-                        "Input: nums = [3,2,4], target = 6\n" +
-                        "Output: [1,2]");
+		// Exemple 2
+		expectedResult.clear();
+		expectedResult.add(Arrays.asList(new String[] { "" }));
 
-        assertTrue(Arrays.equals(new int[] { 0, 1 }, ArrayAndHashing.twoSum(new int[] { 3, 3 }, 6)),
-                "Failed on Exemple 3:\n" +
-                        "Input: nums = [3,3], target = 6\n" +
-                        "Output: [0,1]");
+		output = ArrayAndHashing.groupAnagrams(new String[] { "" });
+		assertTrue(Assertions.<String>containeUNestedList(expectedResult, output), "Failed on Example 2");
 
-        assertTrue(Arrays.equals(new int[] {2, 4}, ArrayAndHashing.twoSum(new int[] {-1,-2,-3,-4,-5}, -8)),
-        "Failed on Submission test");
-    }
+		// Exemple 3
+		expectedResult.clear();
+		expectedResult.add(Arrays.asList(new String[] { "a" }));
+
+		output = ArrayAndHashing.groupAnagrams(new String[] { "a" });
+		assertTrue(Assertions.<String>containeUNestedList(expectedResult, output), "Failed on Example 3");
+	}
 }
