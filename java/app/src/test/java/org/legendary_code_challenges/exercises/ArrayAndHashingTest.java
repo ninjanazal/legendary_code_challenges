@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 import org.legendary_code_challenges.exercises.tools.*;
+
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class ArrayAndHashingTest {
@@ -63,5 +65,25 @@ public class ArrayAndHashingTest {
 
 		output = ArrayAndHashing.groupAnagrams(new String[] { "a" });
 		assertTrue(Assertions.<String>containeUNestedList(expectedResult, output), "Failed on Example 3");
+	}
+
+	// [347. Top K Frequent Elements]
+	@Test
+	void topKFrequentTest() {
+		assertTrue(Arrays.equals(new int[] { 1, 2 }, ArrayAndHashing.topKFrequent(new int[] { 1, 1, 1, 2, 2, 3 }, 2)),
+				"Failed on Example 1");
+
+		assertTrue(Arrays.equals(new int[] { 1 }, ArrayAndHashing.topKFrequent(new int[] { 1 }, 1)),
+				"Failed on Example 2");
+
+		assertTrue(Arrays.equals(new int[] { -1 }, ArrayAndHashing.topKFrequent(new int[] { -1, -1 }, 1)),
+				"Failed on Submission test");
+
+		int[] expected = new int[] { 2, -1 };
+		Arrays.sort(expected);
+		int[] result = ArrayAndHashing.topKFrequent(new int[] { 4, 1, -1, 2, -1, 2, 3 }, 2);
+		Arrays.sort(result);
+
+		assertTrue(Arrays.equals(expected, result), "Failed on Submission test 2");
 	}
 }

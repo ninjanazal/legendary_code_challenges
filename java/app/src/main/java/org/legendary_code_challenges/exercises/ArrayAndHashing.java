@@ -4,8 +4,7 @@ import java.util.*;
 
 public class ArrayAndHashing {
   /*
-   * [217. Contains
-   * Duplicate](https://leetcode.com/problems/contains-duplicate/description/)
+   * [217. Contains Duplicate]
    * Given an integer array nums, return true if any value appears at least twice
    * in the array,
    * and return false if every element is distinct.
@@ -22,8 +21,7 @@ public class ArrayAndHashing {
   }
 
   /*
-   * [242. Valid
-   * Anagram](https://leetcode.com/problems/valid-anagram/description/)
+   * [242. Valid Anagram]
    * Given two strings s and t, return true if t is an anagram of s, and false
    * otherwise.
    * An Anagram is a word or phrase formed by rearranging the letters of a
@@ -93,6 +91,34 @@ public class ArrayAndHashing {
     List<List<String>> result = new ArrayList<>();
     for (Map.Entry<String, List<String>> set : dataMap.entrySet()) {
       result.add(set.getValue());
+    }
+
+    return result;
+  }
+
+  /*
+   * [347. Top K Frequent Elements]
+   * Given an integer array nums and an integer k, return the k most frequent
+   * elements.
+   * You may return the answer in any order.
+   */
+  public static int[] topKFrequent(int[] nums, int k) {
+    Map<Integer, Integer> dataMap = new HashMap<>();
+
+    for (int i : nums) {
+      if (!dataMap.containsKey(i)) {
+        dataMap.put(i, 1);
+      } else {
+        dataMap.put(i, dataMap.get(i) + 1);
+      }
+    }
+
+    List<Integer> entryList = new ArrayList<>(dataMap.keySet());
+    entryList.sort((a, b) -> dataMap.get(b) - dataMap.get(a));
+
+    int[] result = new int[k];
+    for (int i = 0; i < k; i++) {
+      result[i] = (entryList.get(i));
     }
 
     return result;
