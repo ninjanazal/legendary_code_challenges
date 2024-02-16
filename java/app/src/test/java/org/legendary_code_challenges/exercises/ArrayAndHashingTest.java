@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.legendary_code_challenges.exercises.tools.*;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class ArrayAndHashingTest {
@@ -85,5 +84,14 @@ public class ArrayAndHashingTest {
 		Arrays.sort(result);
 
 		assertTrue(Arrays.equals(expected, result), "Failed on Submission test 2");
+	}
+
+	// [238. Product of Array Except Self]
+	@Test
+	void productExceptSelf() {
+		assertTrue(Arrays.equals(new int[] {24,12,8,6}, ArrayAndHashing.productExceptSelf(new int[] {1,2,3,4})), "Failed on Exemple 1");
+
+		assertTrue(Arrays.equals(new int[] {0,0,9,0,0}, ArrayAndHashing.productExceptSelf(new int[] {-1,1,0,-3,3})), "Failed on Exemple 2");
+
 	}
 }

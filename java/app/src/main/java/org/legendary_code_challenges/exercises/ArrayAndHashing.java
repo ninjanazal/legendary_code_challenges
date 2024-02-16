@@ -123,4 +123,32 @@ public class ArrayAndHashing {
 
     return result;
   }
+
+  /*
+   * [238. Product of Array Except Self]
+   * Given an integer array nums, return an array answer such that answer[i] is
+   * equal to the product of all the elements of nums except nums[i].
+   * The product of any prefix or suffix of nums is guaranteed to fit in a 32-bit
+   * integer.
+   * You must write an algorithm that runs in O(n) time and without using the
+   * division operation.
+   */
+  public static int[] productExceptSelf(int[] nums) {
+    int[] result = new int[nums.length];
+    int[] lCalc = new int[nums.length];
+    Arrays.fill(lCalc, 1);
+
+    for (int i = 1; i < nums.length; i++) {
+      lCalc[i] = nums[i - 1] * lCalc[i - 1];
+    }
+
+    result[nums.length - 1] = lCalc[nums.length - 1];
+
+    int rAccumulator = 1;
+    for (int i = nums.length - 2; i >= 0; i--) {
+      rAccumulator *= nums[i + 1];
+      result[i] = lCalc[i] * rAccumulator; 
+    }
+    return result;
+  }
 }
