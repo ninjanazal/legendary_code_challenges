@@ -89,9 +89,44 @@ public class ArrayAndHashingTest {
 	// [238. Product of Array Except Self]
 	@Test
 	void productExceptSelf() {
-		assertTrue(Arrays.equals(new int[] {24,12,8,6}, ArrayAndHashing.productExceptSelf(new int[] {1,2,3,4})), "Failed on Exemple 1");
+		assertTrue(Arrays.equals(new int[] { 24, 12, 8, 6 }, ArrayAndHashing.productExceptSelf(new int[] { 1, 2, 3, 4 })),
+				"Failed on Exemple 1");
 
-		assertTrue(Arrays.equals(new int[] {0,0,9,0,0}, ArrayAndHashing.productExceptSelf(new int[] {-1,1,0,-3,3})), "Failed on Exemple 2");
+		assertTrue(
+				Arrays.equals(new int[] { 0, 0, 9, 0, 0 }, ArrayAndHashing.productExceptSelf(new int[] { -1, 1, 0, -3, 3 })),
+				"Failed on Exemple 2");
 
+	}
+
+	// [36. Valid Sudoku]
+	@Test
+	void isValidSudokuTest() {
+		char[][] board = new char[][] {
+				{ '5', '3', '.', '.', '7', '.', '.', '.', '.' },
+				{ '6', '.', '.', '1', '9', '5', '.', '.', '.' },
+				{ '.', '9', '8', '.', '.', '.', '.', '6', '.' },
+				{ '8', '.', '.', '.', '6', '.', '.', '.', '3' },
+				{ '4', '.', '.', '8', '.', '3', '.', '.', '1' },
+				{ '7', '.', '.', '.', '2', '.', '.', '.', '6' },
+				{ '.', '6', '.', '.', '.', '.', '2', '8', '.' },
+				{ '.', '.', '.', '4', '1', '9', '.', '.', '5' },
+				{ '.', '.', '.', '.', '8', '.', '.', '7', '9' }
+		};
+
+		assertTrue(ArrayAndHashing.isValidSudoku(board), "Failed on Example 1");
+
+		board = new char[][] {
+				{ '8', '3', '.', '.', '7', '.', '.', '.', '.' },
+				{ '6', '.', '.', '1', '9', '5', '.', '.', '.' },
+				{ '.', '9', '8', '.', '.', '.', '.', '6', '.' },
+				{ '8', '.', '.', '.', '6', '.', '.', '.', '3' },
+				{ '4', '.', '.', '8', '.', '3', '.', '.', '1' },
+				{ '7', '.', '.', '.', '2', '.', '.', '.', '6' },
+				{ '.', '6', '.', '.', '.', '.', '2', '8', '.' },
+				{ '.', '.', '.', '4', '1', '9', '.', '.', '5' },
+				{ '.', '.', '.', '.', '8', '.', '.', '7', '9' }
+		};
+
+		assertFalse(ArrayAndHashing.isValidSudoku(board), "Failed on Example 2");
 	}
 }

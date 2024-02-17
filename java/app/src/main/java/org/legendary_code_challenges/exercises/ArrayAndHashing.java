@@ -147,8 +147,64 @@ public class ArrayAndHashing {
     int rAccumulator = 1;
     for (int i = nums.length - 2; i >= 0; i--) {
       rAccumulator *= nums[i + 1];
-      result[i] = lCalc[i] * rAccumulator; 
+      result[i] = lCalc[i] * rAccumulator;
     }
     return result;
+  }
+
+  /*
+   * [36. Valid Sudoku]
+   * Determine if a 9 x 9 Sudoku board is valid. Only the filled cells need to be
+   * validated according to the following rules:
+   * - Each row must contain the digits 1-9 without repetition.
+   * - Each column must contain the digits 1-9 without repetition.
+   * - Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9
+   * without repetition.
+   * 
+   * Note:
+   * 
+   * - A Sudoku board (partially filled) could be valid but is not necessarily
+   * solvable.
+   * - Only the filled cells need to be validated according to the mentioned
+   * rules.
+   */
+  public static boolean isValidSudoku(char[][] board) {
+    HashMap<Integer, ArrayList<Character>> lineHashMap = new HashMap<Integer, ArrayList<Character>>();
+    HashMap<Integer, ArrayList<Character>> colHashMap = new HashMap<Integer, ArrayList<Character>>();
+    HashMap<Integer, ArrayList<Character>> boxHashMap = new HashMap<Integer, ArrayList<Character>>();
+
+    for (int r = 0; r < board.length; r++) {
+      for (int c = 0; c < board[r].length; c++) {
+        char value = board[r][c];
+        if (value == '.') {
+          continue;
+        }
+
+        if (!lineHashMap.containsKey(r)) {
+          lineHashMap.put(r, new ArrayList<Character>());
+        }
+
+        if (!colHashMap.containsKey(c)) {
+          colHashMap.put(c, new ArrayList<Character>());
+        }
+
+        int boxId = Math.floorDiv(r, 3) * 3 + Math.floorDiv(c, 3);
+        if (!boxHashMap.containsKey(boxId)) {
+          boxHashMap.put(boxId, new ArrayList<Character>());
+        }
+
+        if (lineHashMap.get(r).contains(value)
+            || colHashMap.get(c).contains(value)
+            || boxHashMap.get(boxId).contains(value)) {
+          return false;
+        }
+
+        lineHashMap.get(r).add(value);
+        colHashMap.get(c).add(value);
+        boxHashMap.get(boxId).add(value);
+      }
+
+    }
+    return true;
   }
 }
