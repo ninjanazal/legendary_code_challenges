@@ -5,9 +5,12 @@
  * For more details on building Java & JVM projects, please refer to https://docs.gradle.org/8.6/userguide/building_java_projects.html in the Gradle documentation.
  */
 
+import com.adarshr.gradle.testlogger.theme.ThemeType
+
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     application
+    id("com.adarshr.test-logger") version "4.0.0"
 }
 
 repositories {
@@ -40,4 +43,25 @@ application {
 tasks.named<Test>("test") {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+testlogger {
+    theme = ThemeType.STANDARD
+    showExceptions = true
+    showStackTraces = true
+    showFullStackTraces = false
+    showCauses = true
+    slowThreshold = 2000
+    showSummary = true
+    showSimpleNames = false
+    showPassed = true
+    showSkipped = true
+    showFailed = true
+    showOnlySlow = false
+    showStandardStreams = false
+    showPassedStandardStreams = true
+    showSkippedStandardStreams = true
+    showFailedStandardStreams = true
+    logLevel = LogLevel.LIFECYCLE
+    slowThreshold = 5000
 }
