@@ -1,4 +1,4 @@
-package org.legendary_code_challenges.exercises.tools;
+package org.legendary_code_challenges.tools;
 
 import java.util.*;
 

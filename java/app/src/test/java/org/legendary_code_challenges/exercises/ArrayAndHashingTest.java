@@ -3,7 +3,7 @@ package org.legendary_code_challenges.exercises;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import org.legendary_code_challenges.exercises.tools.*;
+import org.legendary_code_challenges.tools.*;
 
 import java.util.*;
 
@@ -128,5 +128,13 @@ public class ArrayAndHashingTest {
 		};
 
 		assertFalse(ArrayAndHashing.isValidSudoku(board), "Failed on Example 2");
+	}
+
+	// [128. Longest Consecutive Sequence]
+	@Test
+	void longestConsecutiveTest() {
+		assertEquals(4, ArrayAndHashing.longestConsecutive(new int[] {100,4,200,1,3,2}), "Failed on Example 1");
+		assertEquals(9, ArrayAndHashing.longestConsecutive(new int[] {0,3,7,2,5,8,4,6,0,1}), "Failed on Example 2");
+
 	}
 }
