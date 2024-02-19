@@ -1,6 +1,7 @@
 package org.legendary_code_challenges.exercises;
 
 import java.util.*;
+import java.util.function.BinaryOperator;
 
 public class StackEx {
 
@@ -67,11 +68,11 @@ public class StackEx {
 		}
 
 		public void push(int val) {
-			int[] data = new int[]{val, val};
-			
-			if(!stkPair.isEmpty()){
+			int[] data = new int[] { val, val };
+
+			if (!stkPair.isEmpty()) {
 				int[] prev = stkPair.getLast();
-				data[1] = val <  prev[1] ? val : prev[1];
+				data[1] = val < prev[1] ? val : prev[1];
 			}
 			stkPair.add(data);
 		}
@@ -87,6 +88,50 @@ public class StackEx {
 		public int getMin() {
 			return stkPair.getLast()[1];
 		}
+	}
 
+	/*
+	 * [150. Evaluate Reverse Polish Notation]
+	 * You are given an array of strings tokens that represents an arithmetic
+	 * expression in a Reverse Polish Notation.
+	 * 
+	 * Evaluate the expression. Return an integer that represents the value of the
+	 * expression.
+	 * 
+	 * Note that:
+	 * 
+	 * - The valid operators are '+', '-', '*', and '/'.
+	 * - Each operand may be an integer or another expression.
+	 * - The division between two integers always truncates toward zero.
+	 * - There will not be any division by zero.
+	 * - The input represents a valid arithmetic expression in a reverse polish
+	 * notation.
+	 * - The answer and all the intermediate calculations can be represented in a
+	 * 32-bit integer.
+	 */
+	public static int evalRPN(String[] tokens) {
+		HashMap<String, BinaryOperator<Integer>> operators = new HashMap<String, BinaryOperator<Integer>>() {
+			{
+				put("+", (lOp, rOP) -> lOp + rOP);
+				put("-", (lOp, rOP) -> lOp - rOP);
+				put("*", (lOp, rOP) -> lOp * rOP);
+				put("/", (lOp, rOP) -> Math.divideExact(lOp, rOP));
+			}
+		};
+
+		Stack<Integer> opStack = new Stack<>();
+		for (int i = 0; i < tokens.length; i++) {
+			String token = tokens[i];
+			if (operators.keySet().contains(token)) {
+				int rOp = opStack.pop();
+				int lOp = opStack.pop();
+
+				opStack.push(operators.get(token).apply(lOp, rOp));
+			} else {
+				opStack.push(Integer.parseInt(token));
+			}
+		}
+
+		return opStack.pop();
 	}
 }
