@@ -51,4 +51,15 @@ public class StackExTest {
     assertTrue(Arrays.asList(new String[] { "()" })
         .equals(StackEx.generateParenthesis(1)), "Failed on Example 2");
   }
+
+  // [739. Daily Temperatures]
+  @Test
+  void dailyTemperaturesTest() {
+    assertTrue(Arrays.equals(new int[] { 1, 1, 4, 2, 1, 1, 0, 0 },
+        StackEx.dailyTemperatures(new int[] { 73, 74, 75, 71, 69, 72, 76, 73 })), "Failed on Example 1");
+    assertTrue(Arrays.equals(new int[] { 1, 1, 1, 0 },
+        StackEx.dailyTemperatures(new int[] { 30, 40, 50, 60 })), "Failed on Example 2");
+    assertTrue(Arrays.equals(new int[] { 1, 1, 0 },
+        StackEx.dailyTemperatures(new int[] { 30, 60, 90 })), "Failed on Example 2");
+  }
 }

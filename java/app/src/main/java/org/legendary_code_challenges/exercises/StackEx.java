@@ -160,4 +160,38 @@ public class StackEx {
 			parenthesisRecursion(collection, lCoun, rCount + 1, total, build.concat(")"));
 		}
 	}
+
+	/*
+	 * [739. Daily Temperatures]
+	 * Given an array of integers temperatures represents the daily temperatures,
+	 * return an array answer such that answer[i] is the number of days you have to
+	 * wait after the ith day to get a warmer temperature. If there is no future day
+	 * for which this is possible, keep answer[i] == 0 instead.
+	 */
+	public static int[] dailyTemperatures(int[] temperatures) {
+		int[] answer = new int[temperatures.length];
+
+		// 0: temp, 1: pos
+		List<int[]> aux = new ArrayList<int[]>();
+
+		for (int i = 0; i < temperatures.length; i++) {
+			int temp = temperatures[i];
+			if (aux.isEmpty()) {
+				aux.add(new int[] { temp, i });
+			} else {
+				for (int j = aux.size() - 1; j >= 0; j--) {
+					int[] pair = aux.get(j);
+					if (temp > pair[0]) {
+						answer[pair[1]] = i - pair[1];
+						aux.remove(j);
+					} else {
+						break;
+					}
+				}
+				aux.add(new int[] { temp, i });
+			}
+		}
+
+		return answer;
+	}
 }
