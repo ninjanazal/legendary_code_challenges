@@ -134,4 +134,30 @@ public class StackEx {
 
 		return opStack.pop();
 	}
+
+	/*
+	 * [22. Generate Parentheses]
+	 * Given n pairs of parentheses, write a function to generate all combinations
+	 * of well-formed parentheses.
+	 */
+	public static List<String> generateParenthesis(int n) {
+		List<String> result = new ArrayList<String>();
+		parenthesisRecursion(result, 0, 0, n, "");
+		return result;
+	}
+
+	private static void parenthesisRecursion(List<String> collection, int lCoun, int rCount, int total, String build) {
+		if (lCoun == rCount && lCoun == total) {
+			collection.add(build);
+			return;
+		}
+
+		if (lCoun < total) {
+			parenthesisRecursion(collection, lCoun + 1, rCount, total, build.concat("("));
+		}
+
+		if (rCount < lCoun) {
+			parenthesisRecursion(collection, lCoun, rCount + 1, total, build.concat(")"));
+		}
+	}
 }

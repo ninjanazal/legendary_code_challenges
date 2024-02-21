@@ -3,6 +3,7 @@ package org.legendary_code_challenges.exercises;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import java.util.*;;
 
 public class StackExTest {
   @Test
@@ -39,5 +40,15 @@ public class StackExTest {
         StackEx.evalRPN(new String[] { "10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+" }),
         "Failed on Example 3");
 
+  }
+
+  // [22. Generate Parentheses]
+  @Test
+  void generateParenthesisTest() {
+    assertTrue(Arrays.asList(new String[] { "((()))", "(()())", "(())()", "()(())", "()()()" })
+        .equals(StackEx.generateParenthesis(3)), "Failed on Example 1");
+
+    assertTrue(Arrays.asList(new String[] { "()" })
+        .equals(StackEx.generateParenthesis(1)), "Failed on Example 2");
   }
 }
