@@ -77,4 +77,14 @@ public class StackExTest {
     assertEquals(2, StackEx.carFleet(10, new int[] { 6, 8 }, new int[] { 3, 2 }),
         "Failed on Submission 1");
   }
+
+  // [84. Largest Rectangle in Histogram]
+  @Test
+  void largestRectangleAreaTest() {
+    assertEquals(10, StackEx.largestRectangleArea(new int[] { 2, 1, 5, 6, 2, 3 }), "Failed on Example 1");
+    assertEquals(4, StackEx.largestRectangleArea(new int[] { 2, 4 }), "Failed on Example 2");
+    
+    assertEquals(2, StackEx.largestRectangleArea(new int[] { 2, 0, 2 }), "Failed on Submission 1");
+    assertEquals(3, StackEx.largestRectangleArea(new int[] { 2, 1, 2 }), "Failed on Submission 2");
+  }
 }

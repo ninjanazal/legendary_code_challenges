@@ -218,33 +218,65 @@ public class StackEx {
 	 * Return the number of car fleets that will arrive at the destination.
 	 */
 	public static int carFleet(int target, int[] position, int[] speed) {
-		class Pair<S, T> {
-			public final S x;
-			public final T y;
-
-			public Pair(S x, T y) {
-				this.x = x;
-				this.y = y;
-			}
-		}
-
-		List<Pair<Integer, Float>> answer = new ArrayList<Pair<Integer, Float>>();
+		List<float[]> answer = new ArrayList<float[]>();
 
 		for (int i = 0; i < position.length; i++) {
-			answer.add(new Pair<Integer, Float>(position[i], (float)(target - position[i]) / (float)speed[i]));
+			answer.add(new float[] { position[i], (float) (target - position[i]) / (float) speed[i] });
 		}
 
-		Collections.sort(answer, (a, b) -> a.x - b.x);
+		Collections.sort(answer, (a, b) -> (int) (a[0] - b[0]));
 
 		int fleets = 1;
-		float last_fleet_time = answer.get(answer.size() - 1).y;
+		float last_fleet_time = answer.get(answer.size() - 1)[1];
 
 		for (int i = position.length - 2; i >= 0; i--) {
-			if (answer.get(i).y > last_fleet_time) {
-				last_fleet_time = answer.get(i).y;
+			if (answer.get(i)[1] > last_fleet_time) {
+				last_fleet_time = answer.get(i)[1];
 				fleets++;
 			}
 		}
 		return fleets;
+	}
+
+	/*
+	 * [84. Largest Rectangle in Histogram]
+	 * Given an array of integers heights representing the histogram's bar height
+	 * where the width of each bar is 1, return the area of the largest rectangle in
+	 * the histogram.
+	 */
+	public static int largestRectangleArea(int[] heights) {
+		Stack<int[]> pairStack = new Stack<>();
+		int maxArea = 0;
+
+		for (int i = 0; i < heights.length; i++) {
+			if (pairStack.empty()) {
+				pairStack.add(new int[] { heights[i], i });
+			} else {
+				int height = heights[i];
+				int start_idx = i;
+				while (!pairStack.isEmpty() && pairStack.peek()[0] > height) {
+					int[] prev = pairStack.pop();
+					int area = (i - prev[1]) * prev[0];
+					start_idx = prev[1];
+
+					if (maxArea < area) {
+						maxArea = area;
+					}
+				}
+
+				pairStack.add(new int[] { height, start_idx });
+			}
+		}
+
+		while (!pairStack.isEmpty()) {
+			int[] pair = pairStack.pop();
+			int area = (heights.length - pair[1]) * pair[0];
+
+			if (maxArea < area) {
+				maxArea = area;
+			}
+		}
+
+		return maxArea;
 	}
 }
