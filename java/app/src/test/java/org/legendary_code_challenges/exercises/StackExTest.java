@@ -62,4 +62,19 @@ public class StackExTest {
     assertTrue(Arrays.equals(new int[] { 1, 1, 0 },
         StackEx.dailyTemperatures(new int[] { 30, 60, 90 })), "Failed on Example 2");
   }
+
+  // [853. Car Fleet]
+  @Test
+  void carFleetTest() {
+    assertEquals(3, StackEx.carFleet(12, new int[] { 10, 8, 0, 5, 3 }, new int[] { 2, 4, 1, 1, 3 }),
+        "Failed on Example 1");
+
+    assertEquals(1, StackEx.carFleet(10, new int[] { 3 }, new int[] { 3 }),
+        "Failed on Example 2");
+    assertEquals(1, StackEx.carFleet(100, new int[] { 0, 2, 4 }, new int[] { 4, 2, 1 }),
+        "Failed on Example 3");
+
+    assertEquals(2, StackEx.carFleet(10, new int[] { 6, 8 }, new int[] { 3, 2 }),
+        "Failed on Submission 1");
+  }
 }
