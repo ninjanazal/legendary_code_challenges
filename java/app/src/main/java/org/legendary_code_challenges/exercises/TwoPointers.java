@@ -62,4 +62,49 @@ public class TwoPointers {
 
     return new int[2];
   }
+
+  /*
+   * [15. 3Sum]
+   * Given an integer array nums, return all the triplets [nums[i], nums[j],
+   * nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] +
+   * nums[k] == 0.
+   * 
+   * Notice that the solution set must not contain duplicate triplets.
+   */
+  public static List<List<Integer>> threeSum(int[] nums) {
+    List<List<Integer>> result = new ArrayList<>();
+    Arrays.sort(nums);
+
+    for (int i = 0; i < nums.length; i++) {
+      if (i > 0 && nums[i] == nums[i - 1]) {
+        continue;
+      }
+      int target = -nums[i];
+      int lPointer = i + 1;
+      int rPointer = nums.length - 1;
+
+      while (lPointer < rPointer) {
+        int sum = nums[lPointer] + nums[rPointer];
+
+        if (sum == target) {
+          result.add(Arrays.asList(nums[i], nums[lPointer], nums[rPointer]));
+          lPointer++;
+          rPointer--;
+
+          while (lPointer < rPointer && nums[lPointer] == nums[lPointer - 1]) {
+            lPointer++;
+          }
+          while (lPointer < rPointer && nums[rPointer] == nums[rPointer + 1]) {
+            rPointer--;
+          }
+        } else if (sum > target) {
+          rPointer--;
+        } else {
+          lPointer++;
+        }
+      }
+    }
+
+    return result;
+  }
 }
